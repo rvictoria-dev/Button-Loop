@@ -22,6 +22,18 @@ https://github.com/user-attachments/assets/3240a06c-e925-47b3-8238-566727209600
 
 ---
 
+### .ᐟ.ᐟ How It Works
+
+1. **Two layers:** The button has two `span` elements with the same word. The `.text` is the fixed text, positioned on top with `position: absolute`. The `.marquee` remains in the normal page flow, which also defines the button’s width.
+2. **Hidden by default:** the `.marquee` starts with `opacity: 0` and `animation-play-state: paused`, so the button looks like a simple black pill.
+3. **Hover:** on `:hover`, the `.marquee` appears (`opacity: 1`), the `.text` disappears (`opacity: 0`), and the animation changes to `running`. Both transitions use a `0.2s` duration.
+4. **Motion:** The `keyframes` for the `marquee` move the text using `translateX` from `--start` (`0em`) to `--end` (`5em`) in 1 second, with `linear` timing and `infinite` looping.
+5. **Continuous loop:** The `text-shadow` draws copies of the word every `--spacing` (`5em`). When the text reaches `5em`, the copy that was at `-5em` is exactly where the original started, so the restart isn’t visible.
+6. **Crop:** The button’s `overflow: hidden` and `border-radius: 99rem` crop the text that extends beyond the pill’s edges.
+7. **Adjustments:** To change the effect, edit the CSS variables. `--spacing` and `--end` must always have the same value for the loop to remain continuous.
+
+---
+
 ### ⚙️ Tech Stack
 
 - **HTML5**
@@ -37,18 +49,6 @@ button-loop/
 ├── Styles.css
 └── README.md
 ```
-
----
-
-### .ᐟ.ᐟ How It Works
-
-1. **Two layers:** The button has two `span` elements with the same word. The `.text` is the fixed text, positioned on top with `position: absolute`. The `.marquee` remains in the normal page flow, which also defines the button’s width.
-2. **Hidden by default:** the `.marquee` starts with `opacity: 0` and `animation-play-state: paused`, so the button looks like a simple black pill.
-3. **Hover:** on `:hover`, the `.marquee` appears (`opacity: 1`), the `.text` disappears (`opacity: 0`), and the animation changes to `running`. Both transitions use a `0.2s` duration.
-4. **Motion:** The `keyframes` for the `marquee` move the text using `translateX` from `--start` (`0em`) to `--end` (`5em`) in 1 second, with `linear` timing and `infinite` looping.
-5. **Continuous loop:** The `text-shadow` draws copies of the word every `--spacing` (`5em`). When the text reaches `5em`, the copy that was at `-5em` is exactly where the original started, so the restart isn’t visible.
-6. **Crop:** The button’s `overflow: hidden` and `border-radius: 99rem` crop the text that extends beyond the pill’s edges.
-7. **Adjustments:** To change the effect, edit the CSS variables. `--spacing` and `--end` must always have the same value for the loop to remain continuous.
 
 ---
 
